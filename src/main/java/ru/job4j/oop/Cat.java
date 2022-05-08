@@ -5,4 +5,8 @@ public class Cat {
         Cat peppy = new Cat();
         Cat sparky = new Cat();
     }
+
+    public String sound() {
+        return "may-may";
+    }
 }
