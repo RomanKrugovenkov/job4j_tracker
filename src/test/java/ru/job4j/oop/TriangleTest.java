@@ -18,7 +18,7 @@ public class TriangleTest {
     }
 
     @Test
-    public void when00and50and05Then125() {
+    public void when00and50and05Then12dot5() {
         Point a = new Point(0, 0);
         Point b = new Point(5, 0);
         Point c = new Point(0, 5);
