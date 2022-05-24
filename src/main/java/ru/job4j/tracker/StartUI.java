@@ -53,6 +53,16 @@ public class StartUI {
                 } else {
                     System.out.println("Ошибка удаления заявки.");
                 }
+            } else if (select == 4) {
+                System.out.println("=== Find item by id ===");
+                System.out.print("Enter Id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                Item temp = tracker.findById(id);
+                if (temp != null) {
+                    System.out.println(temp);
+                } else {
+                    System.out.println("Заявка с введенным id: " + id + " не найдена.");
+                }
             } else if (select == 6) {
                 run = false;
             }
