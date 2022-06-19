@@ -7,6 +7,13 @@ public class SingleTracker {
     private SingleTracker() {
     }
 
+    public static SingleTracker getInstance() {
+        if (instance == null) {
+            instance = new SingleTracker();
+        }
+        return instance;
+    }
+
     public Item add(Item item) {
         return tracker.add(item);
     }
