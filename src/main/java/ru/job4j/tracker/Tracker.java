@@ -32,6 +32,7 @@ public class Tracker {
         for (int i = 0; i < items.size(); i++) {
             if (id == items.get(i).getId()) {
                 rsl = i;
+                break;
             }
         }
         return rsl;
