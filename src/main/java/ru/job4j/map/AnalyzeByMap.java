@@ -31,11 +31,8 @@ public class AnalyzeByMap {
         Map<String, Integer> temps = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (!temps.containsKey(subject.name())) {
-                    temps.put(subject.name(), subject.score());
-                } else {
-                    temps.put(subject.name(), subject.score() + temps.get(subject.name()));
-                }
+                temps.computeIfPresent(subject.name(), (a, b) -> b = subject.score() + temps.get(subject.name()));
+                temps.putIfAbsent(subject.name(), subject.score());
             }
         }
         List<Label> rsl = new ArrayList<>();
@@ -62,11 +59,8 @@ public class AnalyzeByMap {
         Map<String, Integer> temps = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (!temps.containsKey(subject.name())) {
-                    temps.put(subject.name(), subject.score());
-                } else {
-                    temps.put(subject.name(), subject.score() + temps.get(subject.name()));
-                }
+                temps.computeIfPresent(subject.name(), (a, b) -> b = subject.score() + temps.get(subject.name()));
+                temps.putIfAbsent(subject.name(), subject.score());
             }
         }
         List<Label> rsl = new ArrayList<>();
