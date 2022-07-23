@@ -31,7 +31,7 @@ public class AnalyzeByMap {
         Map<String, Integer> temps = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                temps.computeIfPresent(subject.name(), (a, b) -> b = subject.score() + temps.get(subject.name()));
+                temps.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
                 temps.putIfAbsent(subject.name(), subject.score());
             }
         }
@@ -59,7 +59,7 @@ public class AnalyzeByMap {
         Map<String, Integer> temps = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                temps.computeIfPresent(subject.name(), (a, b) -> b = subject.score() + temps.get(subject.name()));
+                temps.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
                 temps.putIfAbsent(subject.name(), subject.score());
             }
         }
