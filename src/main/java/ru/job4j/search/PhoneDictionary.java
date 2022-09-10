@@ -22,10 +22,10 @@ public class PhoneDictionary {
     }
 
     public ArrayList<Person> find2(String key) {
-        Predicate<Person> eqlAddress = p -> key.contains(p.getAddress());
-        Predicate<Person> eqlPhone = p -> key.contains(p.getPhone());
-        Predicate<Person> eqlSurname = p -> key.contains(p.getSurname());
-        Predicate<Person> eqlName = p -> key.contains(p.getName());
+        Predicate<Person> eqlAddress = p -> p.getAddress().contains(key);
+        Predicate<Person> eqlPhone = p -> p.getPhone().contains(key);
+        Predicate<Person> eqlSurname = p -> p.getSurname().contains(key);
+        Predicate<Person> eqlName = p -> p.getName().contains(key);
         Predicate<Person> combine = eqlAddress.or(eqlPhone).or(eqlSurname).or(eqlName);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
