@@ -1,7 +1,5 @@
 package ru.job4j.steam;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 enum Suit {
@@ -26,5 +24,10 @@ public class Card {
                 .flatMap(s -> Stream.of(Value.values())
                         .map(v -> new Card(s, v)))
                 .forEach(System.out::println);
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" + "suit=" + suit + ", value=" + value + '}';
     }
 }
