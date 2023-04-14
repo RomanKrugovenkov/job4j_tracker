@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Item implements Comparable<Item> {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-    private final LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created;
     private int id;
     private String name;
 
@@ -15,15 +15,27 @@ public class Item implements Comparable<Item> {
 
     public Item(String name) {
         this.name = name;
+        this.created = LocalDateTime.now();
     }
 
     public Item(String name, int id) {
         this.name = name;
         this.id = id;
+        this.created = LocalDateTime.now();
+    }
+
+    public Item(String name, int id, LocalDateTime created) {
+        this.name = name;
+        this.id = id;
+        this.created = created;
     }
 
     public LocalDateTime getCreated() {
         return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     public int getId() {

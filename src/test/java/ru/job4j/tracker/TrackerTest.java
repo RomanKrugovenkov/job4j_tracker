@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -10,8 +11,8 @@ import static org.hamcrest.core.IsNull.nullValue;
 
 public class TrackerTest {
     @Test
-    public void whenTestFindById() {
-        Tracker tracker = new Tracker();
+    public void whenTestFindById() throws SQLException {
+        Store tracker = new MemTracker();
         Item bug = new Item("Bug");
         Item item = tracker.add(bug);
         Item result = tracker.findById(item.getId());
@@ -19,8 +20,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenTestFindAll() {
-        Tracker tracker = new Tracker();
+    public void whenTestFindAll() throws SQLException {
+        Store tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -30,8 +31,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenTestFindByNameCheckArrayLength() {
-        Tracker tracker = new Tracker();
+    public void whenTestFindByNameCheckArrayLength() throws SQLException {
+        Store tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -44,8 +45,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenTestFindByNameCheckSecondItemName() {
-        Tracker tracker = new Tracker();
+    public void whenTestFindByNameCheckSecondItemName() throws SQLException {
+        Store tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -58,8 +59,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenReplace() {
-        Tracker tracker = new Tracker();
+    public void whenReplace() throws SQLException {
+        Store tracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
         tracker.add(bug);
@@ -71,8 +72,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenDelete() {
-        Tracker tracker = new Tracker();
+    public void whenDelete() throws SQLException {
+        Store tracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
         tracker.add(bug);

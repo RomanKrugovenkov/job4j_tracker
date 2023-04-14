@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
 public class StartUI {
@@ -12,14 +12,26 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
-        List<UserAction> actions = List.of(new CreateAction(output), new ShowAction(output), new EditAction(output),
-                new DeleteAction(output), new FindIdAction(output), new ExitAction(output));
-        new StartUI(output).init(input, tracker, actions);
+        Input input = new ValidateInput(
+                output, new ConsoleInput()
+        );
+        try (Store tracker = new SqlTracker()) {
+            List<UserAction> actions = List.of(
+                    new CreateAction(output),
+                    new ShowAction(output),
+                    new EditAction(output),
+                    new DeleteAction(output),
+                    new FindIdAction(output),
+                    new FindNameAction(output),
+                    new ExitAction(output)
+            );
+            new StartUI(output).init(input, tracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store tracker, List<UserAction> actions) throws SQLException {
         boolean run = true;
         while (run) {
             showMenu(actions);
