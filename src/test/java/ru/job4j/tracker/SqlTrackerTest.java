@@ -101,7 +101,6 @@ public class SqlTrackerTest {
         Item item2 = new Item("item2");
         tracker.add(item1);
         tracker.add(item2);
-        List<Item> items = new ArrayList<>(List.of(item1, item2));
         assertThat(tracker.findById(item2.getId())).isEqualTo(item2);
     }
 
